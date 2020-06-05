@@ -127,25 +127,27 @@ async function start(){
                 player_guess(1, max, answer)
                 break
             
+            case 'c':
+                let guess_mode = await ask("Please choose random or binary guessing (b/r)")
+                switch(guess_mode){
+                    case 'b':
+                        binary_search(1, max)
+                        break
+                    
+                    case 'r':
+                        random_guess(1, max)
+                        break
+                    default:
+                        console.log("Error, incorrect number, please try again.")
+                        start()
+                        break                
             default:
                 console.log("Hmm")
                 process.exit()
                 
         }
         
-        let guess_mode = await ask("Please choose random or binary guessing (b/r)")
-        switch(guess_mode){
-            case 'b':
-                binary_search(1, max)
-                break
-            
-            case 'r':
-                random_guess(1, max)
-                break
-
-            default:
-                console.log("Error, incorrect number, please try again.")
-                start()
+        
         }
         
     } else {
